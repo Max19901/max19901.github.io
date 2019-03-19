@@ -1,18 +1,29 @@
-
-var mSlide = document.querySelectorAll('.mSlide');
-
-function $(selector) {
-  this.element = document.querySelectorAll(selector);
+function MSlider(options) {
+  let mSlide = document.querySelectorAll('.mSlide');
   
-  this._on = function(event, callback) {
-    for (var i = 0; this.element.length > i; i++) {
-      this.element[i].addEventListener(event, callback);
-    }
-    return this;
+  let opt = {
+    autoplay: options.autoplay || false,
+    pagination: options.pagination || true,
+    reverse: options.direction || false,
+    delay: options.delay || 4000
+   
   }
-}
+   
+ 
+  if(opt.autoplay) {
+     start(opt);
+     }
+    
+  
+  function start(opt) {
+    console.log(opt);
+    setInterval(() => {
+      changeSlide(mSlide, opt.direct);
+    }, opt.delay);
+  }
+  
+  let button = new $('.mBtn');
 
-var button = new $('.mBtn');
 
 button._on('click', function(){
   if (this.getAttribute('data-attr') == 'Next') {
@@ -21,8 +32,7 @@ button._on('click', function(){
     changeSlide(mSlide, false);
   }
 });
-
-
+  
 function changeSlide(item, flg) {
   if (flg) {
     for (var i = 0; item.length > i; i++) {
@@ -51,7 +61,28 @@ function changeSlide(item, flg) {
     }
   }
 
+  }
+  
 }
+
+
+function $(selector) {
+  this.element = document.querySelectorAll(selector);
+  
+  this._on = function(event, callback) {
+    for (var i = 0; this.element.length > i; i++) {
+      this.element[i].addEventListener(event, callback);
+    }
+    return this;
+  }
+}
+
+let slider = new MSlider({
+  autoplay: true
+})
+
+
+
 
 
 
