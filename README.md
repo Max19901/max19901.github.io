@@ -1,5 +1,5 @@
 # MSlider
-========================
+
 Simple slider ( native JS )
 
 ### Documentation
