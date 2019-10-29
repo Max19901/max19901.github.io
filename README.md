@@ -1,5 +1,7 @@
 # MSlider
 
+[DEMO](https://max19901.github.io/)
+
 Simple slider ( native JS )
 
 ### Documentation
